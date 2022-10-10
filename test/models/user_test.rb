@@ -5,6 +5,10 @@ class UserTest < ActiveSupport::TestCase
     assert users(:one).valid?
   end
 
+  test "must has_many todos" do
+    assert_equal User.reflect_on_association(:todos).macro, :has_many
+  end
+
   test "validate presence of username" do
     user = User.new
 
