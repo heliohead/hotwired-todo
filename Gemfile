@@ -30,3 +30,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "hotwire-livereload", "~> 1.2"
