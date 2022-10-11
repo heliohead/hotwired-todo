@@ -4,15 +4,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.turbo_stream {
-          flash[:notice] = success_message
-          render turbo_stream: turbo_stream.replace("#{helpers.dom_id(User.new)}_form", partial: "form", locals: {user: User.new})
-        }
-        format.html { redirect_to todo_url(@user), notice: success_message }
+        @user = User.new
+        flash[:notice] = success_message
+        format.turbo_stream
+        format.html { redirect_to todo_url(@user) }
       else
-        format.turbo_stream {
-          render turbo_stream: turbo_stream.replace("#{helpers.dom_id(@user)}_form", partial: "form", locals: {user: @user})
-        }
+        format.turbo_stream
         format.html { render :new, status: :unprocessable_entity }
       end
     end
