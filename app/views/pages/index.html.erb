@@ -3,23 +3,8 @@
 </div>
 
 <main class="grid gap-6 my-6 mx-12 w-2xl container px-2 mx-auto">
-  <div class="bg-white shadow rounded-lg">
-    <div class="flex flex-row px-2 py-3 mx-3">
-      <div class="flex flex-col ml-4 mt-1">
-        <div class="text-gray-600 text-2xl font-semibold">New User</div>
-      </div>
-    </div>
-    <div class="w-full max-w-lg">
-      <form class="bg-white px-4 pb-4">
-        <div class="flex items-center py-2 space-x-4">
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
-          <button class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
-            Create new user
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
+
+  <%= render "users/index" %>
 
   <div class="bg-white shadow rounded-lg">
     <div class="flex flex-row px-2 py-3 mx-3">

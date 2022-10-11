@@ -1,0 +1,13 @@
+<%= form_with(model: user, id: "#{dom_id(user)}_form", class: "px-4 pb-4") do |form| %>
+  <div class="flex items-center py-2 space-x-4">
+    <%= form.label :name, class: "sr-only" %>
+    <div>
+      <%= form.text_field :username, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "Username", autocomplete: "off" %>
+    </div>
+    <button class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded submit" type="submit">
+      Create new user
+    </button>
+  </div>
+
+  <%= render "users/message", user: user, flash: flash %>
+<% end %>
