@@ -3,47 +3,8 @@
 </div>
 
 <main class="grid gap-6 my-6 mx-12 w-2xl container px-2 mx-auto">
-
   <%= render "users/index" %>
-
-  <div class="bg-white shadow rounded-lg">
-    <div class="flex flex-row px-2 py-3 mx-3">
-      <div class="flex flex-col ml-4 mt-1">
-        <div class="text-gray-600 text-2xl font-semibold">TODOs</div>
-      </div>
-    </div>
-    <div class="w-full max-w-2xl">
-      <form class="bg-white px-4 pb-4">
-        <div class="flex items-center py-2 space-x-4">
-          <div class="inline-block">
-            <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-              <option>Really long option that will likely overlap the chevron</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </select>
-          </div>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="title">
-          <button class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
-            Create new TODO
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div class="bg-white shadow rounded-lg">
-    <div class="flex flex-row px-2 py-3 mx-3">
-      <div class="flex flex-col mb-2 ml-4 mt-1">
-        <div class="text-gray-600 text-2xl font-semibold">Active TODOs</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="bg-white shadow rounded-lg mb-6">
-    <div class="flex flex-row px-2 py-3 mx-3">
-      <div class="flex flex-col mb-2 ml-4 mt-1">
-        <div class="text-gray-600 text-2xl font-semibold">Completed TODOs</div>
-      </div>
-    </div>
-  </div>
+  <%= render "todos/index" %>
+  <%= render "todos/active" %>
+  <%= render "todos/completed" %>
 </main>
