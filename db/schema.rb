@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_224942) do
 
   create_table "todos", force: :cascade do |t|
     t.string "title"
-    t.integer "status"
+    t.integer "status", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
