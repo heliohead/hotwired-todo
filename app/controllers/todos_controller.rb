@@ -4,12 +4,11 @@ class TodosController < ApplicationController
     @users = User.pluck(:username, :id)
 
     respond_to do |format|
+      format.turbo_stream
+
       if @todo.save
-        @todo = Todo.new
-        format.turbo_stream
         format.html { redirect_to todo_url(@todo) }
       else
-        format.turbo_stream
         format.html { render :new, status: :unprocessable_entity }
       end
     end

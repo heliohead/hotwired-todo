@@ -5,6 +5,11 @@
 <%= turbo_stream.replace "completed-todos" do %>
   <%= render "todos/completed", completed_todos: [] %>
 <% end %>
+
 <%= turbo_stream.replace "active-todos" do %>
   <%= render "todos/active", active_todos: [] %>
+<% end %>
+
+<%= turbo_stream.update "todo_user_id" do %>
+  <%= options_for_select User.order(id: :desc).pluck(:username, :id) + [["Any user", nil]], @user %>
 <% end %>
