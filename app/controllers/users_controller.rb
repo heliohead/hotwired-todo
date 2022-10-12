@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  before_action :find_todos, only: :index
+
+  def index
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to root_path }
+    end
+  end
+
   def create
     @user = User.new(user_params)
 
@@ -23,5 +32,17 @@ class UsersController < ApplicationController
 
   def success_message
     "User was successfully created."
+  end
+
+  def find_todos
+    user = User.find_by(id: params[:user_id])
+
+    if user.present?
+      @active_todos = user.todos.active
+      @completed_todos = user.todos.completed
+    else
+      @active_todos = Todo.active
+      @completed_todos = Todo.completed
+    end
   end
 end

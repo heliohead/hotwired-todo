@@ -1,3 +1,10 @@
 <%= turbo_stream.replace "#{dom_id(@user)}_form" do %>
   <%= render "form", user: @user %>
 <% end %>
+
+<%= turbo_stream.replace "completed-todos" do %>
+  <%= render "todos/completed", completed_todos: [] %>
+<% end %>
+<%= turbo_stream.replace "active-todos" do %>
+  <%= render "todos/active", active_todos: [] %>
+<% end %>
