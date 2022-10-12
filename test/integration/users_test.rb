@@ -26,4 +26,14 @@ class UsersTest < ApplicationSystemTestCase
     assert page.has_content?("Username can't be blank")
     refute page.has_content?("User was successfully created.")
   end
+
+  test "update select for user when create user" do
+    name = "user-create1"
+    visit root_url
+    find("#user_username").set(name)
+    click_button(id: "user-submit")
+
+    assert page.has_content?("User was successfully created.")
+    assert find("#todo_user_id").text.include?(name)
+  end
 end
