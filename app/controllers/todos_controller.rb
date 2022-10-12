@@ -1,7 +1,17 @@
 class TodosController < ApplicationController
+  def update
+    @todo = Todo.find(params[:id])
+
+    respond_to do |format|
+      if @todo.update(todo_params)
+        format.turbo_stream { render :show }
+      end
+    end
+  end
+
   def create
     @todo = Todo.new(todo_params)
-    @users = User.pluck(:username, :id)
+    @users = User.order(id: :desc).pluck(:username, :id)
 
     respond_to do |format|
       format.turbo_stream
@@ -17,6 +27,6 @@ class TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:title, :user_id)
+    params.require(:todo).permit(:title, :user_id, :status)
   end
 end

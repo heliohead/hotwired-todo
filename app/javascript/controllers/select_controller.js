@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { get } from "@rails/request.js"
+import { get, patch } from "@rails/request.js"
 
 export default class extends Controller {
   static targets = ["select"]
@@ -13,5 +13,15 @@ export default class extends Controller {
     let user_id = event.target.selectedOptions[0].value
 
     get(`${this.urlValue}?user_id=${user_id}`, { responseKind: "turbo-stream" })
+  }
+
+  toggle(event) {
+    let todo_id = event.target.dataset.todo
+    let status = event.target.dataset.status
+
+    patch(`/todos/${todo_id}`, {
+      responseKind: "turbo-stream",
+      body: JSON.stringify({ todo: { status: status } })
+    })
   }
 }
