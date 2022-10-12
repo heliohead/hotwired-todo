@@ -1,0 +1,17 @@
+<%= form_with(model: todo, id: "#{dom_id(todo)}_form", class: "px-4 pb-4") do |form| %>
+  <div class="flex items-center py-2 space-x-4">
+    <%= form.select :user_id, @users, { prompt: "Any user" }, class: "block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" %>
+    <%= form.label :title, class: "sr-only" %>
+    <div>
+      <%= form.text_field :title, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "title", autocomplete: "off" %>
+    </div>
+    <button class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded submit" type="submit">
+      Create new TODO
+    </button>
+  </div>
+  <% if todo.errors.any? %>
+    <% todo.errors.each do |error| %>
+      <p class="text-red-500 text-xs italic ml-48"><%= error.full_message %></p>
+    <% end %>
+  <% end %>
+<% end %>
