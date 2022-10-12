@@ -4,4 +4,24 @@
       <div class="text-gray-600 text-2xl font-semibold">Completed TODOs</div>
     </div>
   </div>
+
+  <% if completed_todos.present? %>
+    <% completed_todos.each_with_index do |todo, index| %>
+      <div class="px-4 pb-4">
+        <div class="flex items-center p-2 space-x-4 rounded <%= "bg-gray-100" if index.odd? %>">
+
+          <div class="w-full py-2 px-3 text-gray-700 leading-tight">
+            <p class=""><%= todo.title %></p>
+          </div>
+          <button class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">
+            Uncomplete
+          </button>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="flex flex-col mb-2 ml-4 mt-1">
+      <div class="text-gray-600 font-semibold">There are no TODOs to display</div>
+    </div>
+  <% end %>
 </div>
