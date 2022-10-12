@@ -5,3 +5,7 @@
 <%= turbo_stream.replace "active-todos" do %>
   <%= render "todos/active", active_todos: @todo.user.todos.active %>
 <% end %>
+
+<%= turbo_stream.update "todo_user_id" do %>
+  <%= options_for_select User.order(id: :desc).pluck(:username, :id) + [["Any user", nil]], @todo.user %>
+<% end %>

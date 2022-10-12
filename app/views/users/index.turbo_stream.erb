@@ -1,6 +1,7 @@
 <%= turbo_stream.replace "completed-todos" do %>
   <%= render "todos/completed", completed_todos: @completed_todos %>
 <% end %>
+
 <%= turbo_stream.replace "active-todos" do %>
   <%= render "todos/active", active_todos: @active_todos %>
 <% end %>
